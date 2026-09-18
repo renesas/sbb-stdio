@@ -20,9 +20,9 @@ The solution is suitable for:
 * Application demonstrations
 
 
-### What Problem Does This PES Solve?
+### What Problem Does This SBB Solve?
 
-This PES demonstrates how to redirect standard C library console I/O (stdin, stdout, and stderr) to a Renesas FSP UART peripheral using picolibc.
+This SBB demonstrates how to redirect standard C library console I/O (stdin, stdout, and stderr) to a Renesas FSP UART peripheral using picolibc.
 
 Typical use cases include:
 
@@ -34,9 +34,9 @@ Typical use cases include:
 - Customer reference designs
 - Training and educational examples
 
-### What Does the PES Core Code Do?
+### What Does the SBB Core Code Do?
 
-The reusable PES code provides:
+The reusable SBB code provides:
 
 - UART-backed implementations of:
     - printf()
@@ -50,7 +50,7 @@ The reusable PES code provides:
 - UART configuration validation
 - Board-specific reference configuration validation
 
-The PES is intended to be reusable across multiple RA MCU families and target boards with minimal modification.
+The SBB is intended to be reusable across multiple RA MCU families and target boards with minimal modification.
 
 ***
 
@@ -58,21 +58,21 @@ The PES is intended to be reusable across multiple RA MCU families and target bo
 
 - [UART Console (Picolibc + FSP) – User Manual](#uart-console-picolibc--fsp--user-manual)
   - [Summary](#summary)
-    - [What Problem Does This PES Solve?](#what-problem-does-this-pes-solve)
-    - [What Does the PES Core Code Do?](#what-does-the-pes-core-code-do)
+    - [What Problem Does This SBB Solve?](#what-problem-does-this-SBB-solve)
+    - [What Does the SBB Core Code Do?](#what-does-the-SBB-core-code-do)
   - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
   - [Demo Evaluation](#demo-evaluation)
     - [Demonstrated Behavior](#demonstrated-behavior)
       - [Demonstrated Configuration](#demonstrated-configuration)
       - [Performance Notes](#performance-notes)
-    - [Demo Code Versus Reusable PES Code](#demo-code-versus-reusable-pes-code)
-    - [Reusable PES Components](#reusable-pes-components)
+    - [Demo Code Versus Reusable SBB Code](#demo-code-versus-reusable-SBB-code)
+    - [Reusable SBB Components](#reusable-SBB-components)
   - [Key Features](#key-features)
   - [Dependencies](#dependencies)
     - [Hardware and Software Dependencies](#hardware-and-software-dependencies)
       - [FSP Components](#fsp-components)
-      - [PES Components](#pes-components)
+      - [SBB Components](#SBB-components)
       - [Runtime Components](#runtime-components)
       - [Hardware Resources](#hardware-resources)
     - [Mandatory Components](#mandatory-components)
@@ -133,7 +133,7 @@ The PES is intended to be reusable across multiple RA MCU families and target bo
     - [Safe To Modify](#safe-to-modify)
     - [Modify With Care](#modify-with-care)
     - [Generated Files](#generated-files)
-  - [Updating To A Newer PES Release](#updating-to-a-newer-pes-release)
+  - [Updating To A Newer SBB Release](#updating-to-a-newer-SBB-release)
     - [Recommended Approach](#recommended-approach)
       - [Customize:](#customize)
       - [Avoid modifying:](#avoid-modifying)
@@ -214,7 +214,7 @@ Successful operation demonstrates:
 * Proper `printf()` and `getchar()` integration with picolibc
 * Correct UART routing and baud-rate configuration
 
-This demo is recommended as the first validation step after integrating the UART Console PES into a new project.
+This demo is recommended as the first validation step after integrating the UART Console SBB into a new project.
 
 ### Demonstrated Behavior
 
@@ -249,15 +249,15 @@ Demonstrated characteristics include:
 - Interrupt-driven communication
 - Reduced application blocking during output generation
 
-No throughput, latency, CPU utilization, or memory benchmarks are currently provided by this PES.
+No throughput, latency, CPU utilization, or memory benchmarks are currently provided by this SBB.
 
 ***
 
-### Demo Code Versus Reusable PES Code
+### Demo Code Versus Reusable SBB Code
 
-The repository contains both reusable PES components and demonstration/reference application code.
+The repository contains both reusable SBB components and demonstration/reference application code.
 
-### Reusable PES Components
+### Reusable SBB Components
 
 These files are intended to be integrated into customer applications:
 ```
@@ -282,14 +282,14 @@ UART interrupt processing
 Configuration validation
 Demo / Reference Application Code
 
-The following files exist solely to demonstrate PES usage:
+The following files exist solely to demonstrate SBB usage:
 ```
 syscalls_picolib_stdio_to_uart_demo.c
 ```
 
 The demo application:
 
-Exercises the PES APIs
+Exercises the SBB APIs
 Demonstrates expected behavior
 Provides a known-good validation example
 
@@ -319,7 +319,7 @@ The demo application is not intended to be production code.
 
 ### Hardware and Software Dependencies
 
-This PES depends upon the following components:
+This SBB depends upon the following components:
 
 #### FSP Components
 
@@ -327,7 +327,7 @@ This PES depends upon the following components:
 - BSP
 - Interrupt manager
 
-#### PES Components
+#### SBB Components
 
 - ByteQ
 
@@ -350,7 +350,7 @@ This PES depends upon the following components:
 |------------|-------------|
 | Toolchain | LLVM ARM Embedded Toolchain with picolibc |
 | FSP Modules | UART driver appropriate for device |
-| ByteQ | pes-queues ByteQ |
+| ByteQ | SBB-queues ByteQ |
 | BSP | Supported Renesas RA MCU |
 
 ***
@@ -369,7 +369,7 @@ This PES depends upon the following components:
 
 ### Reference Board Assumptions
 
-The validation configuration files supplied with this PES were created and tested using Renesas Fast Prototyping Boards (FPBs).
+The validation configuration files supplied with this SBB were created and tested using Renesas Fast Prototyping Boards (FPBs).
 
 Reference assumptions include:
 
@@ -544,7 +544,7 @@ Validation will fail if transfer instances are configured.
 ## Recommended Starting Points
 ### Public APIs To Review First
 
-Customers evaluating this PES should begin with the following public APIs:
+Customers evaluating this SBB should begin with the following public APIs:
 
 #### Validate Configuration
 
@@ -566,7 +566,7 @@ getchar()
 
 Purpose:
 
-Demonstrates how the PES automatically initializes itself without explicit startup code.
+Demonstrates how the SBB automatically initializes itself without explicit startup code.
 
 #### Read Console Input
 
@@ -1014,7 +1014,7 @@ stdio_uart_config_my_board.c
 
 ### Modify With Care
 
-The following files contain reusable PES implementation logic:
+The following files contain reusable SBB implementation logic:
 
 ```
 syscalls_picolib_stdio_to_uart.c
@@ -1022,7 +1022,7 @@ rs_stdio_uart.c
 rs_stdio_uart.h
 ```
 
-Modifications to these files may complicate future PES upgrades.
+Modifications to these files may complicate future SBB upgrades.
 
 ### Generated Files
 
@@ -1040,9 +1040,9 @@ Changes to generated files may be overwritten when regenerating FSP projects.
 
 ***
 
-## Updating To A Newer PES Release
+## Updating To A Newer SBB Release
 
-Customers are encouraged to keep board-specific customizations separate from reusable PES source files whenever possible.
+Customers are encouraged to keep board-specific customizations separate from reusable SBB source files whenever possible.
 
 ### Recommended Approach
 
@@ -1070,19 +1070,19 @@ Keeping modifications isolated helps:
 
 - Simplify upgrades
 - Reduce merge conflicts
-- Allow newer PES releases to be adopted more easily
+- Allow newer SBB releases to be adopted more easily
 - Preserve access to bug fixes and enhancements
-- If Core PES Files Were Modified
+- If Core SBB Files Were Modified
 
 When upgrading:
 
-- Import the newer PES release.
+- Import the newer SBB release.
 - Compare locally modified files against the new release.
 - Re-apply only required changes.
 - Re-run configuration validation.
 - Re-test UART TX and RX operation.
 
-This minimizes divergence from the maintained PES baseline.
+This minimizes divergence from the maintained SBB baseline.
 
 ## Troubleshooting
 
