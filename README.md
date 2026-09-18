@@ -16,12 +16,6 @@ It is best suited for:
 * Debug console
 * Development phase instrumentation
 
-For production-grade systems, consider:
-
-* Removing heap usage
-* Adding non-blocking APIs
-* RTOS integration
-
 ***
 
 # Getting Started with steps for importing and running the SBB Projects
