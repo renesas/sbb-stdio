@@ -110,8 +110,8 @@ static const uart_instance_t g_uart_jlob_vcom_ref =
 
 rs_stdio_uart_cfg_t const rs_stdio_uart_ref =
 {
- .rxd = IOPORT_PORT_01_PIN_05,
- .txd = IOPORT_PORT_01_PIN_06,
+ .rxd = IOPORT_PORT_01_PIN_10,
+ .txd = IOPORT_PORT_01_PIN_09,
  .uart_instance = g_uart_jlob_vcom_ref,
  .uart_cfg = g_uart_jlob_vcom_ref_cfg,
  .sci_uart_baud_setting = g_uart_jlob_vcom_ref_baud_setting,
@@ -206,12 +206,12 @@ static fsp_err_t check_config_exact(
     rs_stdio_uart_cfg_t const * const p_ref =
         &rs_stdio_uart_ref;
 
-    /* RA4E2 FPB reference VCOM routing */
-    FSP_ERROR_RETURN(IOPORT_PORT_01_PIN_05 == p_cfg->rxd,
+    /* RA2E3 FPB reference VCOM routing */
+    FSP_ERROR_RETURN(IOPORT_PORT_01_PIN_10 == p_cfg->rxd,
                      FSP_ERR_INVALID_ARGUMENT);
 
-    /* RA4E2 FPB reference VCOM routing */
-    FSP_ERROR_RETURN(IOPORT_PORT_01_PIN_06 == p_cfg->txd,
+    /* RA2E3 FPB reference VCOM routing */
+    FSP_ERROR_RETURN(IOPORT_PORT_01_PIN_09 == p_cfg->txd,
                      FSP_ERR_INVALID_ARGUMENT);
 
     sci_uart_extended_cfg_t const * const p_extend_ref =
@@ -366,8 +366,8 @@ fsp_err_t RS_STDIO_UART_CheckApplicationConfiguration(void)
 
     rs_stdio_uart_cfg_t check =
     {
-     .rxd = IOPORT_PORT_01_PIN_05,
-     .txd = IOPORT_PORT_01_PIN_06,
+     .rxd = IOPORT_PORT_01_PIN_10,
+     .txd = IOPORT_PORT_01_PIN_09,
      .uart_instance = g_uart_jlob_vcom,
      .uart_cfg = g_uart_jlob_vcom_cfg,
      .sci_uart_baud_setting = g_uart_jlob_vcom_baud_setting,
