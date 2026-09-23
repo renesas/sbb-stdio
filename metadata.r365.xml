@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pesMetadata>
+  <releaseMetadata>
+    <pesName>Console I/O</pesName>
+    <version>0.9.0</version>
+    <releaseDate>TBD</releaseDate>
+    <releaseType>Draft</releaseType>
+    <metadataSchemaVersion>1.0</metadataSchemaVersion>
+  </releaseMetadata>
+  <discoveryMetadata>
+    <targetProducts>
+      <productFamily>RA</productFamily>
+      <productSeries>RA0/RA2/RA4/RA6/RA8</productSeries>
+      <supportedDevices>
+        <device>
+          <family>RA</family>
+          <series>RA0</series>
+          <group>RA0L1</group>
+        </device>
+        <device>
+          <family>RA</family>
+          <series>RA2</series>
+          <group>RA2E3</group>
+        </device>
+        <device>
+          <family>RA</family>
+          <series>RA4</series>
+          <group>RA4E2</group>
+        </device>
+        <device>
+          <family>RA</family>
+          <series>RA6</series>
+          <group>RA6E2</group>
+        </device>
+        <device>
+          <family>RA</family>
+          <series>RA8</series>
+          <group>RA8E1</group>
+        </device>
+      </supportedDevices>
+    </targetProducts>
+    <targetMarkets>
+      <market>Industrial Automation</market>
+      <market>IoT</market>
+      <market>Power and Energy</market>
+      <market>Building Automation</market>
+      <market>Education</market>
+    </targetMarkets>
+    <endApplications>
+      <application>Debug Console</application>
+      <application>Command-Line Interface</application>
+      <application>Device Diagnostics</application>
+      <application>Factory Test</application>
+      <application>Field Service</application>
+      <application>Evaluation Kit</application>
+    </endApplications>
+    <functionalTags>
+      <tag>Standard I/O</tag>
+      <tag>Console I/O</tag>
+      <tag>UART</tag>
+      <tag>RM_COMMS</tag>
+      <tag>picolibc</tag>
+      <tag>ByteQ</tag>
+      <tag>Buffered I/O</tag>
+      <tag>Blocking I/O</tag>
+      <tag>Interrupt-Driven I/O</tag>
+      <tag>Lazy Initialization</tag>
+      <tag>Configuration Validation</tag>
+    </functionalTags>
+    <hardwareInterfaces>
+      <requiredPeripherals>
+        <peripheral>UART</peripheral>
+      </requiredPeripherals>
+      <inputSignals>
+        <signal>UART RX</signal>
+      </inputSignals>
+      <outputSignals>
+        <signal>UART TX</signal>
+      </outputSignals>
+      <connectedDevices>
+        <device>Serial Terminal</device>
+      </connectedDevices>
+    </hardwareInterfaces>
+  </discoveryMetadata>
+  <descriptiveMetadata>
+    <anatomicalMetadata>
+      <identity>
+        <name>Console I/O</name>
+        <shortName>stdio</shortName>
+        <category>Communication</category>
+        <pesType>Reference Software</pesType>
+      </identity>
+      <description>
+        <summary>Standard C I/O over UART or RM_COMMS</summary>
+      </description>
+      <classification>
+        <domain>Embedded Communication</domain>
+        <technology>UART and RM_COMMS</technology>
+        <subCategory>Console</subCategory>
+      </classification>
+      <supportedBoards>
+        <board>FPB-RA0L1</board>
+        <board>FPB-RA2E3</board>
+        <board>FPB-RA4E2</board>
+        <board>FPB-RA6E2</board>
+        <board>FPB-RA8E1</board>
+      </supportedBoards>
+      <dependencies>
+        <dependency>Renesas FSP</dependency>
+        <dependency>picolibc</dependency>
+        <dependency>LLVM Embedded Toolchain</dependency>
+        <dependency>FSP UART Driver</dependency>
+        <dependency>RM_COMMS</dependency>
+        <dependency>RM_COMMS_UART</dependency>
+        <dependency>ByteQ</dependency>
+      </dependencies>
+      <hardwareRequirements>
+        <requirement>UART Peripheral</requirement>
+        <requirement>UART TX Pin</requirement>
+        <requirement>UART RX Pin</requirement>
+        <requirement>UART Interrupts</requirement>
+        <requirement>Serial Terminal</requirement>
+      </hardwareRequirements>
+      <artifacts>
+        <artifact>src/rs_stdio_comms.c</artifact>
+        <artifact>src/rs_stdio_comms.h</artifact>
+        <artifact>src/rs_stdio_uart.c</artifact>
+        <artifact>src/rs_stdio_uart.h</artifact>
+		<artifact>examples/vscode/stdio_uart_on_fpb_ra0l1/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_uart_on_fpb_ra2e3/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_uart_on_fpb_ra4e2/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_uart_on_fpb_ra6e2/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_uart_on_fpb_ra8e1/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_comms_on_fpb_ra0l1/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_comms_on_fpb_ra2e3/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_comms_on_fpb_ra4e2/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_comms_on_fpb_ra6e2/configuration.xml</artifact>
+		<artifact>examples/vscode/stdio_comms_on_fpb_ra8e1/configuration.xml</artifact>
+     </artifacts> 
+	  <documentation>
+        <document>README.md</document>
+		<document>docs/README-BUFFERED-UART.md</document>
+		<document>docs/README-COMMS.md</document>
+		<document>docs/DESIGN-BUFFERED-UART.md</document>
+		<document>docs/DESIGN-COMMS.md</document>
+		<document>docs/MRD-BUFFERED-UART.md</document>
+		<document>docs/MRD-COMMS.md</document>
+		<document>docs/BUILD.md</document>
+		<document>docs/CONTRIBUTING.md</document>
+	  </documentation>
+    </anatomicalMetadata>
+    <behavioralMetadata>
+      <capabilities>
+        <capability>UART stdin redirection</capability>
+        <capability>UART stdout redirection</capability>
+        <capability>UART stderr redirection</capability>
+        <capability>RM_COMMS stdin redirection</capability>
+        <capability>RM_COMMS stdout redirection</capability>
+        <capability>RM_COMMS stderr redirection</capability>
+        <capability>UART TX buffering</capability>
+        <capability>UART RX buffering</capability>
+        <capability>Configuration checking</capability>
+        <capability>Host unit testing</capability>
+      </capabilities>
+      <publicInterfaces>
+        <interface>printf()</interface>
+        <interface>fprintf()</interface>
+        <interface>putchar()</interface>
+        <interface>getchar()</interface>
+        <interface>scanf()</interface>
+        <interface>fflush()</interface>
+        <interface>RS_STDIO_UART_GetConfigSize()</interface>
+        <interface>RS_STDIO_UART_GenConfig()</interface>
+        <interface>RS_STDIO_UART_CheckConfig()</interface>
+        <interface>RS_STDIO_UART_CheckApplicationConfiguration()</interface>
+        <interface>RS_STDIO_COMMS_GetConfigSize()</interface>
+        <interface>RS_STDIO_COMMS_GenConfig()</interface>
+        <interface>RS_STDIO_COMMS_CheckConfig()</interface>
+        <interface>RS_STDIO_COMMS_CheckApplicationConfiguration()</interface>
+      </publicInterfaces>
+      <configuration>
+        <parameter>Backend</parameter>
+        <parameter>MCU</parameter>
+        <parameter>Board</parameter>
+        <parameter>UART Driver</parameter>
+        <parameter>UART Channel</parameter>
+        <parameter>Baud Rate</parameter>
+        <parameter>UART Pins</parameter>
+        <parameter>Interrupt Priority</parameter>
+        <parameter>RTOS Mode</parameter>
+      </configuration>
+      <executionModel>
+        <initialization>Lazy initialization</initialization>
+        <runtimeBehavior>UART buffered; RM_COMMS blocking</runtimeBehavior>
+      </executionModel>
+      <useCases>
+        <useCase>Debug Logging</useCase>
+        <useCase>CLI Interaction</useCase>
+        <useCase>Runtime Diagnostics</useCase>
+        <useCase>Device Configuration</useCase>
+        <useCase>Manufacturing Test</useCase>
+        <useCase>Field Service</useCase>
+      </useCases>
+    </behavioralMetadata>
+    <performanceMetadata>
+      <performanceCharacteristics>
+        <memoryUsage>UART RX 256 B; UART TX 256 B</memoryUsage>
+        <operatingRange>115200 baud reference</operatingRange>
+        <customMetric name="uartTransferModel">Buffered</customMetric>
+        <customMetric name="commsTransferModel">1 byte</customMetric>
+        <customMetric name="timeoutSupport">None</customMetric>
+        <customMetric name="dmaDtcSupport">None</customMetric>
+      </performanceCharacteristics>
+      <resources>
+        <resource>UART Channel</resource>
+        <resource>UART TX Pin</resource>
+        <resource>UART RX Pin</resource>
+        <resource>UART Interrupts</resource>
+        <resource>RX ByteQ</resource>
+        <resource>TX ByteQ</resource>
+        <resource>RM_COMMS Instance</resource>
+      </resources>
+      <validation>
+        <validationCase>
+          <validatedBoard>FPB-RA0L1</validatedBoard>
+          <validatedDevice>RA0L1</validatedDevice>
+          <validatedConfiguration>UARTA VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedBoard>FPB-RA2E3</validatedBoard>
+          <validatedDevice>RA2E3</validatedDevice>
+          <validatedConfiguration>SCI UART VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedBoard>FPB-RA4E2</validatedBoard>
+          <validatedDevice>RA4E2</validatedDevice>
+          <validatedConfiguration>SCI UART VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedBoard>FPB-RA6E2</validatedBoard>
+          <validatedDevice>RA6E2</validatedDevice>
+          <validatedConfiguration>SCI UART VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedBoard>FPB-RA8E1</validatedBoard>
+          <validatedDevice>RA8E1</validatedDevice>
+          <validatedConfiguration>SCI-B UART VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedConfiguration>MSVC host tests</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+		          <validatedBoard>FPB-RA0L1</validatedBoard>
+          <validatedDevice>RA0L1</validatedDevice>
+          <validatedConfiguration>RM_COMMS VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedBoard>FPB-RA2E3</validatedBoard>
+          <validatedDevice>RA2E3</validatedDevice>
+          <validatedConfiguration>RM_COMMS VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedBoard>FPB-RA4E2</validatedBoard>
+          <validatedDevice>RA4E2</validatedDevice>
+          <validatedConfiguration>RM_COMMS VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedBoard>FPB-RA6E2</validatedBoard>
+          <validatedDevice>RA6E2</validatedDevice>
+          <validatedConfiguration>RM_COMMS VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedBoard>FPB-RA8E1</validatedBoard>
+          <validatedDevice>RA8E1</validatedDevice>
+          <validatedConfiguration>RM_COMMS VCOM</validatedConfiguration>
+          <testResult></testResult>
+        </validationCase>
+        <validationCase>
+          <validatedConfiguration>LLVM host tests (COMMS)</validatedConfiguration>
+          <testResult></testResult>
+      </validation>
+    </performanceMetadata>
+  </descriptiveMetadata>
+</pesMetadata>
